@@ -5,7 +5,7 @@ export function Quiz({ questions, onComplete }: { questions: QuizQuestion[]; onC
   const [picked, setPicked] = useState<(number | null)[]>(() => questions.map(() => null));
   const [submitted, setSubmitted] = useState(false);
 
-  const score = picked.reduce((s, p, i) => (p === questions[i].answer ? s + 1 : s), 0);
+  const score = picked.reduce<number>((s, p, i) => (p === questions[i].answer ? s + 1 : s), 0);
   const allAnswered = picked.every((p) => p !== null);
 
   const submit = () => {
